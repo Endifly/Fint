@@ -14,6 +14,7 @@ import { CardContent } from '@material-ui/core';
 import Animate from 'animate.css-react'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+
 const useStyles = makeStyles({
   root: {
     minWidth: 200,
@@ -32,15 +33,24 @@ const useStyles = makeStyles({
 });
 
 function Taskbox(probs) {
+  const dispatch = useDispatch()
   const classes = useStyles();
   const handleDelete = () => {
     console.log(probs.items.task)
+    try {
+      dispatch(probs.complete(probs.items.task))
+    } catch (error) {
+      // throw error
+      console.log(error)
+    }
   }
+  
   return(
     
         <card
         className={classes.root}
-      variant="outlined"
+        variant="outlined"
+        className="animate__animated animate__shakeX"
       >
         <Grid
         container

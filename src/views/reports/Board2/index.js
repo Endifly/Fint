@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import { AlignCenter } from 'react-feather';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux'
-import { addTask } from '../../../actions/todoAction'
+import { addTask,completeTask } from '../../../actions/todoAction'
 import { useDispatch, useSelector,useStore } from 'react-redux';
 import TaskBox  from './TaskBox'
 import Grid from '@material-ui/core/Grid';
@@ -58,7 +58,7 @@ function Board2() {
   useEffect(() => {
     //console.log(store.getState().todo.todos)
     setTask(store.getState().todo.todos)
-  },[store.getState()]);
+  },[]);
 
   const onTextFieldChange = (e) => {
     //console.log(e);
@@ -74,6 +74,14 @@ function Board2() {
     }
     setTask(store.getState().todo.todos)
   }
+  const handleComplete = (task) => {
+    try {
+      dispatch(completeTask(task))
+    } catch (error) {
+      throw error
+    }
+    setTask(store.getState().todo.todos)
+  }
   
 
 
@@ -83,10 +91,9 @@ function Board2() {
         <h1></h1>
         <form className={classes.inputBox}>
             <TextField
-              id="outlined-password-input"
+              id="standard-search"
               label="Todo"
-              autoComplete="current-password"
-              variant="outlined"
+              type="search"
               onChange={(e) => onTextFieldChange(e.target.value)}
               style = {{maxWidth: 190}}
             />
@@ -107,7 +114,7 @@ function Board2() {
           justify="center"
           alignItems="center"
         >
-          {store.getState().todo.todos.map(item => <TaskBox items={item}/>)}
+          {store.getState().todo.todos.map(item => <TaskBox items={item} complete={handleComplete}/>)}
         </Grid>
     </div>
   );

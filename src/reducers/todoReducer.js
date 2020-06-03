@@ -1,4 +1,4 @@
-import {ADD_TASK} from '../actions/todoAction'
+import {ADD_TASK,COMPLETE_TASK} from '../actions/todoAction'
 const initialState = {
     todos: [{
         task: 'Eat food',
@@ -10,11 +10,18 @@ const initialState = {
 };
 
 const todoReducer = (state = initialState,action)=> {
-    console.log(action)
+    console.log("recuder",action)
     switch (action.type) {
         case ADD_TASK : {
             const {task} = action.payload
             state.todos=state.todos.concat([{ task: task, completed: false }])
+            return state
+        }
+        case COMPLETE_TASK : {
+            const {task} = action.payload
+            state.todos = state.todos.filter((todo) => {
+                return (todo.task != task)
+              })
             return state
         }
         default : {
