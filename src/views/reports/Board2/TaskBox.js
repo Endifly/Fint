@@ -14,10 +14,17 @@ import { CardContent } from '@material-ui/core';
 import Animate from 'animate.css-react'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles({
   root: {
     minWidth: 200,
+    margin : 10,
+    display: 'flex',
+  },
+  content : {
+    minWidth: 165,
+    margin : 0,
   },
   bullet: {
     display: 'inline-block',
@@ -47,34 +54,30 @@ function Taskbox(probs) {
   
   return(
     
-        <card
-        className={classes.root}
-        variant="outlined"
-        className="animate__animated animate__shakeX"
-      >
+
         <Grid
         container
         direction="row"
         justify="center"
         alignItems="center"
       >
-      <card 
-        className={classes.root}
-        color = "LIGHT" >
-          <CardContent>
+      <Card className={classes.root}
+        color = "blue" >
+          <CardContent className={classes.content}>
           <Typography variant="body1" color="textSecondary" component="p">
             {probs.items.task}
           </Typography>
         </CardContent>
-      </card>
-      <Checkbox
+        <Checkbox
         checked={true}   
         name="checkedF"
         indeterminate
         onClick={() => {handleDelete()}}
       />
+      </Card>
+      
       </Grid>
-    </card>
+
 
   )
 }

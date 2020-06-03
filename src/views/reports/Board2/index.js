@@ -42,6 +42,7 @@ const useStyles = makeStyles(() => ({
   }));
 
   const mapStateToProps = function(state) {
+    console.log("change")
     return {
       message: 'This is message from mapStateToProps',
       todo: state.todos || 0
@@ -54,12 +55,20 @@ function Board2() {
   const [task, setTask] = useState();
   const dispatch = useDispatch()
   const store = useStore()
+  
+
+  const handleChange = () => {
+    //console.log("state change")
+    setTask(store.getState().todo.todos)
+  }
+  store.subscribe(handleChange)
 
   useEffect(() => {
     //console.log(store.getState().todo.todos)
     setTask(store.getState().todo.todos)
   },[]);
 
+  
   const onTextFieldChange = (e) => {
     //console.log(e);
     setTextField(e);
@@ -72,7 +81,7 @@ function Board2() {
     } catch (error) {
       throw error
     }
-    setTask(store.getState().todo.todos)
+    
   }
   const handleComplete = (task) => {
     try {
@@ -80,7 +89,7 @@ function Board2() {
     } catch (error) {
       throw error
     }
-    setTask(store.getState().todo.todos)
+    //setTask(store.getState().todo.todos)
   }
   
 
@@ -114,7 +123,7 @@ function Board2() {
           justify="center"
           alignItems="center"
         >
-          {store.getState().todo.todos.map(item => <TaskBox items={item} complete={handleComplete}/>)}
+          {store.getState().todo.todos.map(item => <TaskBox key = {item.task} items={item} complete={handleComplete}/>)}
         </Grid>
     </div>
   );
