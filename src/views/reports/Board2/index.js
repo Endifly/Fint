@@ -9,14 +9,16 @@ import { addTask } from '../../../actions/todoAction'
 import { useDispatch, useSelector,useStore } from 'react-redux';
 import TaskBox  from './TaskBox'
 import Grid from '@material-ui/core/Grid';
-
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
 import Box from '@material-ui/core/Box';
 
 
 const useStyles = makeStyles(() => ({
     root: {
         fontFamily: "Arial",
-        color : "red",
+        //backgroundColor: '#E1F5C4',
+        top:"5",
     },
     inputBox: {
       display:"flex",
@@ -25,6 +27,7 @@ const useStyles = makeStyles(() => ({
       width:"300",
       space:"3",
       padding:"5",
+      top:"5"
     },
     taskBox: {
       display:"flex",
@@ -34,6 +37,7 @@ const useStyles = makeStyles(() => ({
       width:"300",
       space:"3",
       padding:"5",
+      backgroundColor: 'white',
     },
   }));
 
@@ -47,31 +51,36 @@ const useStyles = makeStyles(() => ({
 function Board2() {
   const classes = useStyles();
   const [textField, setTextField] = useState();
+  const [task, setTask] = useState();
+  const dispatch = useDispatch()
+  const store = useStore()
 
   useEffect(() => {
-    console.log(store.getState().todo.todos)
-  });
+    //console.log(store.getState().todo.todos)
+    setTask(store.getState().todo.todos)
+  },[store.getState()]);
 
   const onTextFieldChange = (e) => {
-    console.log(e);
+    //console.log(e);
     setTextField(e);
   };
   const handleAdd = () => {
     console.log(`Todo : ${textField}`)
-    console.log(store.getState())
+    
     try {
       dispatch(addTask(textField))
     } catch (error) {
       throw error
     }
+    setTask(store.getState().todo.todos)
   }
-  const dispatch = useDispatch()
-  const store = useStore()
+  
 
 
   return (
-    <div>
+    <div className={classes.root}>
         {/* <h3 className={classes.root}>To do list</h3> */}
+        <h1></h1>
         <form className={classes.inputBox}>
             <TextField
               id="outlined-password-input"
@@ -79,12 +88,17 @@ function Board2() {
               autoComplete="current-password"
               variant="outlined"
               onChange={(e) => onTextFieldChange(e.target.value)}
+              style = {{maxWidth: 190}}
             />
-            <Button 
-              variant="contained" 
-              onClick={() => {handleAdd()}}>
-                Add
-            </Button>
+            
+            <Fab 
+              color="primary" 
+              aria-label="add" 
+              size="small" 
+              onClick={() => {handleAdd()}}
+              style = {{marginTop: 7,marginLeft: 10}}>
+              <AddIcon />
+            </Fab>
             
         </form>
         <Grid
@@ -93,7 +107,7 @@ function Board2() {
           justify="center"
           alignItems="center"
         >
-          {/* <TaskBox items="item"/> */}
+          {store.getState().todo.todos.map(item => <TaskBox items={item}/>)}
         </Grid>
     </div>
   );

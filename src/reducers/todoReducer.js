@@ -14,8 +14,8 @@ const todoReducer = (state = initialState,action)=> {
     switch (action.type) {
         case ADD_TASK : {
             const {task} = action.payload
-            
-            return state.todos.concat([{ task: task, completed: false }])
+            state.todos=state.todos.concat([{ task: task, completed: false }])
+            return state
         }
         default : {
             return state
