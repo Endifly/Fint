@@ -78,31 +78,7 @@ const navConfig = [
         icon: BarChartIcon,
         href: '/app/models/createmodels'
       },
-      {
-        title: 'Create Models',
-        icon: BarChartIcon,
-        href: '/app/models/createmodels'
-      },
-      {
-        title: 'Create Models',
-        icon: BarChartIcon,
-        href: '/app/models/createmodels'
-      },
-      {
-        title: 'Create Models',
-        icon: BarChartIcon,
-        href: '/app/models/createmodels'
-      },
-      {
-        title: 'Create Models',
-        icon: BarChartIcon,
-        href: '/app/models/createmodels'
-      },
-      {
-        title: 'Create Models',
-        icon: BarChartIcon,
-        href: '/app/models/createmodels'
-      },
+      
       
     ]
   },
