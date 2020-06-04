@@ -5,12 +5,12 @@ function Card2(probs) {
 
   if (probs.type == 'preview') {
     return (
-      <Preview/>
+      <Preview onPress={probs.onPress}/>
     )
   }
   if (probs.type == 'detail') {
     return (
-      <Detail/>
+      <Detail onPress={probs.onPress}/>
     )
   }
 }

@@ -41,10 +41,10 @@ function Detail() {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          InSpect
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Edit
         </Button>
       </CardActions>
     </Card>

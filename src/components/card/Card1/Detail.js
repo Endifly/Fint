@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
 
 const useStyles = makeStyles({
   root: {
@@ -21,9 +20,6 @@ const useStyles = makeStyles({
 
 function Detail() {
   const classes = useStyles();
-  const handleClick = () => {
-    console.log("card clickeds")
-  }
 
   return (
     <Card className={classes.root}>
@@ -45,10 +41,10 @@ function Detail() {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          Inspect
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Edit
         </Button>
       </CardActions>
     </Card>

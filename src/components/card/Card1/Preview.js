@@ -21,12 +21,9 @@ const useStyles = makeStyles({
 
 function Preview(probs) {
   const classes = useStyles();
-  const handleClick = () => {
-    console.log("clicked")
-  }
+  const {onPress} = probs
   return (
-    <Card className={classes.root}>
-       {/* <ButtonBase onClick={() => {handleClick()}}> */}
+    <Card className={classes.root} onClick={()=>onPress("Card1")}>
       <CardActionArea >
         <CardMedia
           className={classes.media}

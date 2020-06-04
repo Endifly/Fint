@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 import Card1 from '../../../components/card/Card1'
 import Card2 from '../../../components/card/Card2'
 import Card3 from '../../../components/card/Card3'
+import ButtonBase from '@material-ui/core/ButtonBase';
 const useStyles = makeStyles(theme=>({
   root: {
     minWidth: 200,
@@ -27,7 +28,7 @@ const useStyles = makeStyles(theme=>({
     display: 'flex',
     flexDirection: 'row',
     height: '90vh',
-    //backgroundColor: "#b3cde0",
+    backgroundColor: "#f4f6f8",
   },
   leftCol :{
     flex: 1,
@@ -66,13 +67,14 @@ const useStyles = makeStyles(theme=>({
 
 function Createmodels() {
   const classes = useStyles()
-  const items = [...Array(100)].map((val, i) => `Item ${i}`);
-  const [card,SetCard] = useState();
-  function logEvent(type) {
-    console.log(`event '${type}' triggered!`);
+  const [card,SetCard] = useState("Card1");
+  function handleClick(card) {
+    //console.log(card)
+    SetCard(card)
+
   }
-  const handleClick = (card)=> {
-    console.log("23")
+  function nowCard(nowCard) {
+    return card==nowCard
   }
   return (
     <div className={classes.container}>
@@ -83,9 +85,9 @@ function Createmodels() {
         xs={7}>
         <Grid
           lg={6}>
-            <Card1 type="preview" click={handleClick}/>
-            <Card2 type="preview" onClick={handleClick}/>
-            <Card3 type="preview" onClick={handleClick}/>
+            <Card1 type="preview" onPress={handleClick}/>
+            <Card2 type="preview" onPress={handleClick}/>
+            <Card3 type="preview" onPress={handleClick}/>
         </Grid>
         
         
@@ -96,9 +98,9 @@ function Createmodels() {
         xs={5}>
         <Grid
           lg={6}>
-          {true && <Card1 type="detail"/>}
-          {false && <Card2 type="detail"/>}
-          {true && <Card3 type="detail"/>}
+          {nowCard("Card1") && <Card1 type="detail"/>}
+          {nowCard("Card2") && <Card2 type="detail"/>}
+          {nowCard("Card3") && <Card3 type="detail"/>}
         </Grid>
         
       </Grid>

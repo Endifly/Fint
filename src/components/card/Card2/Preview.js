@@ -19,11 +19,11 @@ const useStyles = makeStyles({
   },
 });
 
-function Preview() {
+function Preview(probs) {
   const classes = useStyles();
-
+  const {onPress} = probs;
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={()=>onPress("Card2")}>
       <CardActionArea>
         <CardMedia
           className={classes.media}

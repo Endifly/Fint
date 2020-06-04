@@ -25,10 +25,10 @@ const todoReducer = (state = initialState,action)=> {
             //     return (todo.task != task)
             //   })
             state.todos.forEach(e=>{
-                if (e.task != task) {
+                if (e.task !== task) {
                     newTodos.push({ task: e.task, completed: e.completed })
                 }
-                else if (e.task == task) {
+                else if (e.task === task) {
                     newTodos.push({ task: e.task, completed: true })
                 }
             })

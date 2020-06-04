@@ -2,13 +2,9 @@ import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import {
   AppBar,
-  Box,
   Button,
-  Divider,
   Toolbar,
-  Hidden,
   Typography,
-  Link,
   IconButton,
   makeStyles
 } from '@material-ui/core';
