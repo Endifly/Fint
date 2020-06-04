@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function Board3() {
+function Board4() {
   const store = useStore()
   const [task, setTask] = useState();
   const classes = useStyles();
@@ -73,11 +73,10 @@ function Board3() {
               items={item} 
               complete={handleComplete}
               showDelete={false}
-              showUncomplete={true}
               showComplete={true}/>)}
         </Grid>
     </div>
   );
 }
 
-export default Board3;
+export default Board4;

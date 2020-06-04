@@ -49,7 +49,17 @@ import React, {
             exact: true,
             path: '/app/reports/board3',
             component: lazy(() => import('./views/reports/Board3'))
-          }
+          },
+          {
+            exact: true,
+            path: '/app/reports/board4',
+            component: lazy(() => import('./views/reports/Board4'))
+          },
+          {
+            exact: true,
+            path: '/app/models/createmodels',
+            component: lazy(() => import('./views/models/Createmodels'))
+          },
         ]
     },
     {

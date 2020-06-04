@@ -49,20 +49,61 @@ const navConfig = [
     subheader: 'Reports',
     items: [
       {
-        title: 'pizza',
+        title: 'GraphQL',
         icon: BarChartIcon,
         href: '/app/reports/dashboard'
       },
       {
-        title: 'noodle',
+        title: 'unComplete',
         icon: BarChartIcon,
         href: '/app/reports/board2'
       },
       {
-        title: 'spaghetti',
+        title: 'all',
         icon: BarChartIcon,
         href: '/app/reports/board3'
+      },
+      {
+        title: 'complete',
+        icon: BarChartIcon,
+        href: '/app/reports/board4'
       }
+    ]
+  },
+  {
+    subheader: 'Models',
+    items: [
+      {
+        title: 'Create Models',
+        icon: BarChartIcon,
+        href: '/app/models/createmodels'
+      },
+      {
+        title: 'Create Models',
+        icon: BarChartIcon,
+        href: '/app/models/createmodels'
+      },
+      {
+        title: 'Create Models',
+        icon: BarChartIcon,
+        href: '/app/models/createmodels'
+      },
+      {
+        title: 'Create Models',
+        icon: BarChartIcon,
+        href: '/app/models/createmodels'
+      },
+      {
+        title: 'Create Models',
+        icon: BarChartIcon,
+        href: '/app/models/createmodels'
+      },
+      {
+        title: 'Create Models',
+        icon: BarChartIcon,
+        href: '/app/models/createmodels'
+      },
+      
     ]
   },
   
@@ -131,8 +172,8 @@ const useStyles = makeStyles(() => ({
   },
   desktopDrawer: {
     width: 256,
-    top: 0,
-    height: 'calc(100%)'
+    top: 64,
+    height: 'calc(100% - 64px)'
   },
   avatar: {
     cursor: 'pointer',

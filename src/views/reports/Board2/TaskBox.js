@@ -1,20 +1,13 @@
 import React, { useState, useEffect }  from 'react';
-import { Router } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import { AlignCenter } from 'react-feather';
-import TextField from '@material-ui/core/TextField';
-import { connect } from 'react-redux'
-import { addTask } from '../../../actions/todoAction'
 import { useDispatch, useSelector,useStore } from 'react-redux';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import { CardContent } from '@material-ui/core';
 import Animate from 'animate.css-react'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
+import {Animated} from "react-animated-css";
 
 const useStyles = makeStyles({
   root: {
@@ -42,7 +35,8 @@ const useStyles = makeStyles({
 function Taskbox(probs) {
   const dispatch = useDispatch()
   const classes = useStyles();
-  const handleDelete = () => {
+  const [visible, setVisible] = useState();
+  function handleDelete() {
     console.log(probs.items.task)
     try {
       dispatch(probs.complete(probs.items.task))
@@ -51,34 +45,44 @@ function Taskbox(probs) {
       console.log(error)
     }
   }
-  
+  useEffect(() => {
+    //console.log(store.getState().todo.todos)
+    setVisible(true)
+  },[]);
+  const handleVisible= () => {
+    console.log(!visible)
+    setVisible(!visible)
+    console.log(visible)
+    setVisible(!visible)
+    console.log(visible)
+  }
   return(
-    
-
+    <div>
+    <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={visible}>
         <Grid
         container
         direction="row"
         justify="center"
         alignItems="center"
       >
-      <Card className={classes.root}
+      {(probs.showComplete&&probs.items.completed || probs.showUncomplete&& !probs.items.completed) &&<Card className={classes.root}
         color = "blue" >
           <CardContent className={classes.content}>
           <Typography variant="body1" color="textSecondary" component="p">
             {probs.items.task}
           </Typography>
         </CardContent>
-        <Checkbox
+        {probs.showDelete &&  <Checkbox
         checked={true}   
         name="checkedF"
         indeterminate
         onClick={() => {handleDelete()}}
-      />
-      </Card>
+      />}
+      </Card>}
       
       </Grid>
-
-
+  </Animated>
+  </div>
   )
 }
 export default Taskbox;

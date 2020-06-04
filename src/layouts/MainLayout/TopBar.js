@@ -34,7 +34,7 @@ function TopBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            DashBoard header
+            Landingpage header
           </Typography>
           <Button color="inherit">About</Button>
         </Toolbar>

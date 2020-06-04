@@ -73,7 +73,7 @@ function Board2() {
     //console.log(e);
     setTextField(e);
   };
-  const handleAdd = () => {
+  function handleAdd() {
     console.log(`Todo : ${textField}`)
     
     try {
@@ -83,7 +83,7 @@ function Board2() {
     }
     
   }
-  const handleComplete = (task) => {
+  function handleComplete(task) {
     try {
       dispatch(completeTask(task))
     } catch (error) {
@@ -123,7 +123,13 @@ function Board2() {
           justify="center"
           alignItems="center"
         >
-          {store.getState().todo.todos.map(item => <TaskBox key = {item.task} items={item} complete={handleComplete}/>)}
+          {store.getState().todo.todos.map(item => 
+            <TaskBox 
+              key = {item.task} 
+              items={item} 
+              complete={handleComplete}
+              showDelete={true}
+              showUncomplete={true}/>)}
         </Grid>
     </div>
   );

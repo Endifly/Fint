@@ -19,9 +19,20 @@ const todoReducer = (state = initialState,action)=> {
         }
         case COMPLETE_TASK : {
             const {task} = action.payload
-            state.todos = state.todos.filter((todo) => {
-                return (todo.task != task)
-              })
+            console.log({ task: task, completed: false })
+            var newTodos = []
+            // state.todos = state.todos.filter((todo) => {
+            //     return (todo.task != task)
+            //   })
+            state.todos.forEach(e=>{
+                if (e.task != task) {
+                    newTodos.push({ task: e.task, completed: e.completed })
+                }
+                else if (e.task == task) {
+                    newTodos.push({ task: e.task, completed: true })
+                }
+            })
+            state.todos=newTodos
             return state
         }
         default : {
