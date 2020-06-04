@@ -31,10 +31,15 @@ const useStyles = makeStyles(theme=>({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+
   },
   centerCol :{
+    display:'flex',
     flex: 1,
     overflowY: 'scroll',
+    justifyContent: 'top',
+    alignItems:'center',
+    flexDirection: 'column',
   },
   wrapper: {
     display: 'flex',
@@ -70,7 +75,14 @@ function Createmodels() {
         sm={7}
         xs={7}>
         <span>preview</span>
-        <Card1 type="preview"/>
+        <Grid
+          lg={6}>
+            <Card1 type="preview"/>
+            <Card1 type="preview"/>
+            <Card1 type="preview"/>
+            <Card1 type="preview"/>
+        </Grid>
+        
         
       </Grid>
       <Grid className={classes.centerCol}
@@ -78,7 +90,14 @@ function Createmodels() {
         sm={5}
         xs={5}>
         <span>detail</span>
-        <Card1 type="detail"/>
+        <Grid
+          lg={6}>
+          <Card1 type="detail"/>
+          <Card1 type="detail"/>
+          <Card1 type="detail"/>
+          <Card1 type="detail"/>
+        </Grid>
+        
       </Grid>
      
     </div>
