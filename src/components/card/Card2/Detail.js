@@ -10,24 +10,20 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    marginTop:20,
-    minWidth: 300,
-    maxWidth: 450,
+    maxWidth: 345,
+    marginTop: 150
   },
   media: {
     height: 140,
   },
 });
 
-function Preview(probs) {
+function Detail() {
   const classes = useStyles();
-  const handleClick = () => {
-    console.log("clicked")
-  }
+
   return (
     <Card className={classes.root}>
-       {/* <ButtonBase onClick={() => {handleClick()}}> */}
-      <CardActionArea >
+      <CardActionArea>
         <CardMedia
           className={classes.media}
           image="/static/images/cards/contemplative-reptile.jpg"
@@ -35,12 +31,23 @@ function Preview(probs) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Model1
+            Model2
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec leo nibh, pellentesque quis leo quis,
+           luctus suscipit mi. Sed lobortis ultricies vehicula.
           </Typography>
         </CardContent>
       </CardActionArea>
-      
+      <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>
     </Card>
   );
 }
-export default Preview;
+export default Detail;

@@ -7,10 +7,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import ButtonBase from '@material-ui/core/ButtonBase';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    marginTop: 150
   },
   media: {
     height: 140,
@@ -19,10 +21,13 @@ const useStyles = makeStyles({
 
 function Detail() {
   const classes = useStyles();
+  const handleClick = () => {
+    console.log("card clickeds")
+  }
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea >
         <CardMedia
           className={classes.media}
           image="/static/images/cards/contemplative-reptile.jpg"

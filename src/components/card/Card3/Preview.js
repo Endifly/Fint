@@ -19,15 +19,12 @@ const useStyles = makeStyles({
   },
 });
 
-function Preview(probs) {
+function Preview() {
   const classes = useStyles();
-  const handleClick = () => {
-    console.log("clicked")
-  }
+
   return (
     <Card className={classes.root}>
-       {/* <ButtonBase onClick={() => {handleClick()}}> */}
-      <CardActionArea >
+      <CardActionArea>
         <CardMedia
           className={classes.media}
           image="/static/images/cards/contemplative-reptile.jpg"
@@ -35,7 +32,7 @@ function Preview(probs) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Model1
+            Model3
           </Typography>
         </CardContent>
       </CardActionArea>
